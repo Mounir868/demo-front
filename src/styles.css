@@ -1,0 +1,13 @@
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.is-invalid {
+    border-color: #dc3545; /* Rouge */
+    background-color: #f8d7da; /* Légère teinte rouge */
+  }
+
+  .mat-mdc-table {
+    background-color: white;
+  }  
+  

@@ -1,0 +1,24 @@
+<p>Liste des messages</p>
+<div *ngIf="messages.length > 0; else noMessages">
+  <table class="table table-striped" *ngIf="messages.length > 0">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Contenu</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let message of messages">
+        <td>{{ message.id }}</td>
+        <td>{{ message.content }}</td>
+        <td>
+          <button class="btn btn-primary" (click)="openDialog(message)">Voir</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<ng-template #noMessages>
+  <p>Aucun message à afficher.</p>
+</ng-template>

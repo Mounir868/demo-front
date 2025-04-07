@@ -1,0 +1,69 @@
+<h1 class="text-center">Liste des partenaires</h1>
+<table class="table table-striped table-bordered">
+  <thead class="thead-dark">
+    <tr>
+      <th>ID</th>
+      <th>Alias</th>
+      <th>Type</th>
+      <th>Direction</th>
+      <th>Processed Flow Type</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let partner of partners">
+      <td>{{ partner.id }}</td>
+      <td>{{ partner.alias }}</td>
+      <td>{{ partner.type }}</td>
+      <td>{{ partner.direction }}</td>
+      <td>{{ partner.processedFlowType }}</td>
+      <td>
+        <button class="btn btn-danger btn-sm" (click)="deletePartner(partner.id)">Supprimer</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+<form [formGroup]="partnerForm" (ngSubmit)="addPartner()" novalidate>
+  <div class="form-group">
+    <label for="alias">Alias</label>
+    <input id="alias" type="text" class="form-control"
+      formControlName="alias"
+      [ngClass]="{'is-invalid': partnerForm.get('alias').invalid && partnerForm.get('alias').touched}">
+  </div>
+  <div class="form-group">
+    <label for="type">Type</label>
+    <input id="type" type="text" class="form-control"
+      formControlName="type"
+      [ngClass]="{'is-invalid': partnerForm.get('type').invalid && partnerForm.get('type').touched}">
+  </div>
+  <div class="form-group">
+    <label for="direction">Direction</label>
+    <select id="direction" class="form-control"
+      formControlName="direction"
+      [ngClass]="{'is-invalid': partnerForm.get('direction').invalid && partnerForm.get('direction').touched}">
+      <option value="INBOUND">INBOUND</option>
+      <option value="OUTBOUND">OUTBOUND</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="processedFlowType">Processed Flow Type</label>
+    <select id="processedFlowType" class="form-control"
+      formControlName="processedFlowType"
+      [ngClass]="{'is-invalid': partnerForm.get('processedFlowType').invalid && partnerForm.get('processedFlowType').touched}">
+      <option value="MESSAGE">MESSAGE</option>
+      <option value="ALERTING">ALERTING</option>
+      <option value="NOTIFICATION">NOTIFICATION</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="description">Description</label>
+    <textarea id="description" class="form-control"
+      formControlName="description"
+      [ngClass]="{'is-invalid': partnerForm.get('description').invalid && partnerForm.get('description').touched}"></textarea>
+  </div>
+  <button type="submit" class="btn btn-primary mt-2">Ajouter</button>
+</form>
+
+
